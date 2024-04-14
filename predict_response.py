@@ -30,18 +30,13 @@ def preprocess_user_input(user_input):
     bag=[]
     bag_of_words = []
 
-    # tokenize the user_input
-    input_word = nltk.tokenize(user_input) 
-
-    # convert the user input into its root words : stemming
-    input_word2 = get_stem_words(input_word,ignore_words)
-
-    # Remove duplicacy and sort the user_input
-    input_word3 = sorted(list(set(input_word2)))
+    input_word_token_1 = nltk.word_tokenize(user_input)
+    input_word_token_2 = get_stem_words(input_word_token_1, ignore_words) 
+    input_word_token_2 = sorted(list(set(input_word_token_2)))
    
     # Input data encoding : Create BOW for user_input
     for word in words:            
-        if word in input_word2:              
+        if word in input_word_token_2:              
             bag_of_words.append(1)
         else:
             bag_of_words.append(0) 
